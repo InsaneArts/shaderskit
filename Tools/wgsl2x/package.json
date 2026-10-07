@@ -1,0 +1,16 @@
+{
+  "name": "wgsl2x",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Transpiles the dumped TypeGPU WGSL of the shaders library into Metal Shading Language and Swift (CPU) sources plus a manifest for ShadersKit codegen.",
+  "scripts": {
+    "gen": "tsx src/main.ts",
+    "test": "tsx src/selftest.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,798 @@
+{
+ "AngularBlur": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Arc": {
+  "role": "shape",
+  "species": null
+ },
+ "Ascii": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Aurora": {
+  "role": "generator",
+  "species": null
+ },
+ "BarShift": {
+  "role": "warp",
+  "species": null
+ },
+ "BarnDoors": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Beam": {
+  "role": "generator",
+  "species": null
+ },
+ "Bend": {
+  "role": "warp",
+  "species": null
+ },
+ "Blob": {
+  "role": "generator",
+  "species": null
+ },
+ "BlockDissolve": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "BlockNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "BlueNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Blur": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Boids": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "BokehBlur": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "BrickPattern": {
+  "role": "generator",
+  "species": null
+ },
+ "BrightnessContrast": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "BrushedMetal": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Bulge": {
+  "role": "warp",
+  "species": null
+ },
+ "CRTScreen": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "CarbonFiber": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Chalkboard": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "ChannelBlur": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "CheckerWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Checkerboard": {
+  "role": "generator",
+  "species": null
+ },
+ "Chevron": {
+  "role": "generator",
+  "species": null
+ },
+ "ChromaFlow": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "ChromaticAberration": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Chrome": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Circle": {
+  "role": "shape",
+  "species": null
+ },
+ "ColorWheel": {
+  "role": "generator",
+  "species": null
+ },
+ "CompressionArtifacts": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "ConcentricSpin": {
+  "role": "warp",
+  "species": null
+ },
+ "ConicGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "ContourLines": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "CornerPin": {
+  "role": "warp",
+  "species": null
+ },
+ "Crescent": {
+  "role": "shape",
+  "species": null
+ },
+ "Cross": {
+  "role": "shape",
+  "species": null
+ },
+ "Crystal": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "CurlNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "CursorRipples": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "CursorTrail": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "DataMosh": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "DiamondGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "DiamondWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "DiffuseBlur": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "DisplacementMap": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Dither": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "DotGrid": {
+  "role": "generator",
+  "species": null
+ },
+ "DropShadow": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Duotone": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Ellipse": {
+  "role": "shape",
+  "species": null
+ },
+ "Emboss": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Engraving": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "ErosionNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Exposure": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "FallingLines": {
+  "role": "generator",
+  "species": null
+ },
+ "FilmGrain": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "FilmStock": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Flip": {
+  "role": "warp",
+  "species": null
+ },
+ "FloatingParticles": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "FlowField": {
+  "role": "warp",
+  "species": null
+ },
+ "Flower": {
+  "role": "shape",
+  "species": null
+ },
+ "FlowingGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "FlutedGlass": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Fog": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Form3D": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "FractalNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Frost": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "GaborNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Glass": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "GlassTiles": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Glitch": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Glow": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Godrays": {
+  "role": "generator",
+  "species": null
+ },
+ "Goo": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "GradientMap": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Grayscale": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Grid": {
+  "role": "generator",
+  "species": null
+ },
+ "GridDistortion": {
+  "role": "warp",
+  "species": null
+ },
+ "Group": {
+  "role": "structural",
+  "species": "custom"
+ },
+ "HTMLInCanvas": {
+  "role": "media",
+  "species": "custom"
+ },
+ "Halftone": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Heart": {
+  "role": "shape",
+  "species": null
+ },
+ "Heatmap": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "HexGrid": {
+  "role": "generator",
+  "species": null
+ },
+ "Hologram": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Holographic": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "HueShift": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "ImageTexture": {
+  "role": "media",
+  "species": "custom"
+ },
+ "InkFlow": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Invert": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "IrisWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Irradiance": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "IsometricCubes": {
+  "role": "generator",
+  "species": null
+ },
+ "Kaleidoscope": {
+  "role": "warp",
+  "species": null
+ },
+ "KeyFrames": {
+  "role": "overlay",
+  "species": "custom"
+ },
+ "LensDistortion": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "LensFlare": {
+  "role": "generator",
+  "species": null
+ },
+ "LightEdge": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "LightLeak": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Line": {
+  "role": "generator",
+  "species": null
+ },
+ "LinearBlur": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "LinearGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "LinearWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "LiquidMetal": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Liquify": {
+  "role": "warp",
+  "species": null
+ },
+ "MagneticFilings": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Marble": {
+  "role": "generator",
+  "species": null
+ },
+ "MeshGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "Mirror": {
+  "role": "warp",
+  "species": null
+ },
+ "MultiPointGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "Nebula": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Neon": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "NoiseDissolve": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "ObjectTracker": {
+  "role": "overlay",
+  "species": "custom"
+ },
+ "Obsidian": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "PagePeel": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Paper": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Parallelogram": {
+  "role": "shape",
+  "species": null
+ },
+ "ParticleField": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "ParticleFlow": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Particles": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "PerlinNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Perspective": {
+  "role": "warp",
+  "species": null
+ },
+ "PixelSort": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "PixelThrow": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Pixelate": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Plasma": {
+  "role": "generator",
+  "species": null
+ },
+ "Plastic": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "PolarCoordinates": {
+  "role": "warp",
+  "species": null
+ },
+ "Polygon": {
+  "role": "shape",
+  "species": null
+ },
+ "Posterize": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Prism": {
+  "role": "generator",
+  "species": null
+ },
+ "ProgressiveBlur": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "RadialGradient": {
+  "role": "generator",
+  "species": null
+ },
+ "RadialWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "RandomBars": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "ReactionDiffusion": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "RectangularCoordinates": {
+  "role": "warp",
+  "species": null
+ },
+ "ReflectivePlane": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Repeater": {
+  "role": "structural",
+  "species": "custom"
+ },
+ "Ring": {
+  "role": "shape",
+  "species": null
+ },
+ "RippleWipe": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Ripples": {
+  "role": "generator",
+  "species": null
+ },
+ "RoundedRect": {
+  "role": "shape",
+  "species": null
+ },
+ "Saturation": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Scratches": {
+  "role": "generator",
+  "species": null
+ },
+ "Sharpness": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Shatter": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "SimplexNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "SineWave": {
+  "role": "generator",
+  "species": null
+ },
+ "SliceWipe": {
+  "role": "warp",
+  "species": null
+ },
+ "Smoke": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "SmokeFill": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "SmokeFlow": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Solarize": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "SolidColor": {
+  "role": "generator",
+  "species": null
+ },
+ "Sparkle": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Spherize": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "Spiral": {
+  "role": "generator",
+  "species": null
+ },
+ "Star": {
+  "role": "shape",
+  "species": null
+ },
+ "Stone": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "Strands": {
+  "role": "generator",
+  "species": null
+ },
+ "Stretch": {
+  "role": "warp",
+  "species": null
+ },
+ "Stripes": {
+  "role": "generator",
+  "species": null
+ },
+ "StudioBackground": {
+  "role": "generator",
+  "species": null
+ },
+ "SunBurst": {
+  "role": "generator",
+  "species": null
+ },
+ "Surface3D": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Swirl": {
+  "role": "generator",
+  "species": null
+ },
+ "Teardrop": {
+  "role": "shape",
+  "species": null
+ },
+ "Text": {
+  "role": "media",
+  "species": "custom"
+ },
+ "ThinFilm": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "TiltShift": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "TimeTrail": {
+  "role": "simulation",
+  "species": "custom"
+ },
+ "Tint": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Trapezoid": {
+  "role": "shape",
+  "species": null
+ },
+ "TriangularGrid": {
+  "role": "generator",
+  "species": null
+ },
+ "Tritone": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Truchet": {
+  "role": "generator",
+  "species": null
+ },
+ "Twirl": {
+  "role": "warp",
+  "species": null
+ },
+ "VHS": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "VenetianBlinds": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Vesica": {
+  "role": "shape",
+  "species": null
+ },
+ "Vibrance": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "VideoTexture": {
+  "role": "media",
+  "species": "custom"
+ },
+ "Vignette": {
+  "role": "filter",
+  "species": "pointwise"
+ },
+ "Voronoi": {
+  "role": "generator",
+  "species": null
+ },
+ "Voxels": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Water": {
+  "role": "shapeEffect",
+  "species": "custom"
+ },
+ "Watercolor": {
+  "role": "filter",
+  "species": "gather"
+ },
+ "WaveDistortion": {
+  "role": "warp",
+  "species": null
+ },
+ "Waveform": {
+  "role": "generator",
+  "species": null
+ },
+ "WaveletNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "Weave": {
+  "role": "generator",
+  "species": null
+ },
+ "WebcamTexture": {
+  "role": "media",
+  "species": "custom"
+ },
+ "Wool": {
+  "role": "filter",
+  "species": "custom"
+ },
+ "WorleyNoise": {
+  "role": "generator",
+  "species": null
+ },
+ "ZoomBlur": {
+  "role": "filter",
+  "species": "gather"
+ }
+}

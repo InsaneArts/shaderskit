@@ -1,0 +1,106 @@
+name: ShadersDemo
+options:
+  bundleIdPrefix: dev.shaderskit
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+    tvOS: "17.0"
+    watchOS: "10.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: YES
+    ENABLE_PREVIEWS: YES
+    INFOPLIST_KEY_CFBundleDisplayName: Shaders
+    "CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]": NO
+    "CODE_SIGNING_ALLOWED[sdk=appletvsimulator*]": NO
+    "CODE_SIGNING_ALLOWED[sdk=watchsimulator*]": NO
+
+packages:
+  ShadersKit:
+    path: ..
+
+targets:
+  ShadersDemo:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Shared
+    dependencies:
+      - package: ShadersKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.shaderskit.demo
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleLightContent
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UIFileSharingEnabled: YES
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: YES
+    scheme: {}
+
+  ShadersDemo-macOS:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Shared
+      - path: macOS
+    dependencies:
+      - package: ShadersKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.shaderskit.demo.mac
+        PRODUCT_NAME: ShadersDemo-macOS
+        CODE_SIGN_IDENTITY: "-"
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.developer-tools
+        INFOPLIST_KEY_NSHumanReadableCopyright: "ShadersKit demo"
+    scheme: {}
+
+  ShadersDemo-tvOS:
+    type: application
+    platform: tvOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Shared
+      - path: tvOS
+    dependencies:
+      - package: ShadersKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.shaderskit.demo.tv
+        TARGETED_DEVICE_FAMILY: "3"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIUserInterfaceStyle: Automatic
+    scheme: {}
+
+  ShadersDemo-watchOS:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - path: watchOS
+      - path: Shared/Support/Catalog.swift
+      - path: Shared/Support/NameDisambiguation.swift
+      - path: Shared/Support/PreviewFactory.swift
+    dependencies:
+      - package: ShadersKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.shaderskit.demo.watch
+        TARGETED_DEVICE_FAMILY: "4"
+        INFOPLIST_KEY_WKApplication: YES
+        INFOPLIST_KEY_WKWatchOnly: YES
+        SKIP_INSTALL: NO
+    scheme: {}

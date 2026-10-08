@@ -66,8 +66,8 @@ remote, watchOS CPU limits, visionOS, pointer input, color management.
 ## Installing this skill
 
 ```bash
-npx skills add tornikegomareli/shaderskit --skill shaderskit -y            # all detected agents
-npx skills add tornikegomareli/shaderskit --skill shaderskit -y -a claude-code   # one agent
+npx skills add InsaneArts/shaderskit --skill shaderskit -y            # all detected agents
+npx skills add InsaneArts/shaderskit --skill shaderskit -y -a claude-code   # one agent
 ```
 
 ## Prompts from the demo app

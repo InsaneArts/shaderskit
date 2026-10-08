@@ -24,8 +24,8 @@ enum PromptPlatform: String, CaseIterable, Identifiable {
 /// Builds the Swift snippet and the coding-agent prompt from `skills/shaderskit/PROMPT.md`.
 enum AgentPrompt {
     static let defaultPlacement = "full-bleed background behind the main content"
-    static let gitURL = "https://github.com/tornikegomareli/shaderskit"
-    static let installCommand = "npx skills add tornikegomareli/shaderskit --skill shaderskit -y"
+    static let gitURL = "https://github.com/InsaneArts/shaderskit"
+    static let installCommand = "npx skills add InsaneArts/shaderskit --skill shaderskit -y"
     /// UserDefaults key for a user-provided package location (git URL or local path).
     static let locationKey = "packageLocationOverride"
 

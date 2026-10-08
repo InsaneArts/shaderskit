@@ -8,10 +8,10 @@ prompt says.
 Add the ShadersKit "<Component>" shader to my <Platform> app.
 
 Install the ShadersKit skill first if it is not already available:
-    npx skills add tornikegomareli/shaderskit --skill shaderskit -y
+    npx skills add InsaneArts/shaderskit --skill shaderskit -y
 Then use the `shaderskit` skill.
 
-Package: ShadersKit (Swift package, product "ShadersKit"). Location: https://github.com/tornikegomareli/shaderskit (or a local checkout).
+Package: ShadersKit (Swift package, product "ShadersKit"). Location: https://github.com/InsaneArts/shaderskit (or a local checkout).
 Minimum OS: iOS 17 / iPadOS 17 / macOS 14 / tvOS 17 / watchOS 10.
 
 Render exactly this configuration (change it only if I ask):

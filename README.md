@@ -180,7 +180,7 @@ platform notes and recipes. The demo app's "Copy agent prompt" button emits prom
 Install it with the [skills CLI](https://skills.sh):
 
 ```bash
-npx skills add tornikegomareli/shaderskit --skill shaderskit -y
+npx skills add InsaneArts/shaderskit --skill shaderskit -y
 ```
 
 ## Demo app

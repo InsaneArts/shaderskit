@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/assets/icon.png" width="128" alt="The ShadersKit icon: the Aurora shader in a rounded square" />
+</p>
+
 <h1 align="center">ShadersKit</h1>
 
 <h3 align="center">Every shaders.com effect, as a Swift view.</h3>
@@ -6,7 +10,7 @@
   <img src=".github/assets/gallery.png" width="100%" alt="The ShadersKit demo on macOS: a gallery of live shader cards grouped by category" />
 </p>
 
-ShadersKit is a Metal port of the [shaders.com](https://shaders.com) WebGPU component library. All 199 components are Swift structs with the same props and defaults as the web versions, rendered in a `ShaderView` on iOS, iPadOS, macOS, tvOS and visionOS, and by a CPU rasterizer on watchOS. Gradients, noise, shapes, glass and metal materials, blurs, distortions, transitions, particle and fluid simulations.
+ShadersKit is a Metal port of the [shaders.com](https://shaders.com) WebGPU component library. All 199 components are Swift structs with the same props and defaults as the web versions, rendered in a `ShaderView` on iOS, iPadOS, macOS and tvOS, and by a CPU rasterizer on watchOS. Gradients, noise, shapes, glass and metal materials, blurs, distortions, transitions, particle and fluid simulations.
 
 ## Write it like a view
 
@@ -77,7 +81,7 @@ Or in Xcode: File → Add Package Dependencies… and add the `ShadersKit` produ
 
 Requirements:
 
-- iOS 17, iPadOS 17, macOS 14, tvOS 17, watchOS 10 or visionOS 1
+- iOS 17, iPadOS 17, macOS 14, tvOS 17 or watchOS 10 (the package also declares visionOS 1, but it is not built or tested there yet)
 - Xcode 16 or newer
 - `NSCameraUsageDescription`, only for `WebcamTexture`
 

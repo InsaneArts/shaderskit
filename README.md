@@ -12,7 +12,7 @@
 
 ShadersKit is a Metal port of the [shaders.com](https://shaders.com) WebGPU component library. All 199 components are Swift structs with the same props and defaults as the web versions, rendered in a `ShaderView` on iOS, iPadOS, macOS and tvOS, and by a CPU rasterizer on watchOS. Gradients, noise, shapes, glass and metal materials, blurs, distortions, transitions, particle and fluid simulations.
 
-One component is not a port: `GlassGlow` sweeps light through a glass shape taken from the alpha of any content (an image, text, a SwiftUI view), with a refracting edge and a soft halo.
+One component is not a port: `GlassGlow` sweeps light through a glass shape taken from the alpha of any content (an image, text, a SwiftUI view), with a refracting edge and a soft halo. It is also a standalone package with colour palettes and a macOS demo app: [GlassGlow](https://github.com/InsaneArts/glassglow).
 
 ## Write it like a view
 
@@ -75,7 +75,7 @@ Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/InsaneArts/shaderskit", from: "0.1.0"),
+    .package(url: "https://github.com/InsaneArts/shaderskit", from: "0.2.0"),
 ]
 ```
 

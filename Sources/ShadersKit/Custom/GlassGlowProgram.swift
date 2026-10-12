@@ -137,7 +137,7 @@ final class GlassGlowProgram: ComputeProgram {
             a: SIMD4(m.height, m.contrast, m.edgeSoftness, m.dispersion * ctx.scalar("dispersion")),
             b: SIMD4(m.bevelWidth, m.bevelRefraction * ctx.scalar("refraction"), m.bevelExponent, m.rimWidth),
             c: SIMD4(m.rimAmbient, m.rimLight, m.rimInset, ctx.scalar("intensity")),
-            gamma: SIMD4(m.gamma, 0),
+            gamma: SIMD4(m.gamma, 0.9),
             rimColour: SIMD4(m.rimColour, 0),
             band: SIMD4(m.bandInset, m.bandWidth, m.bandLight, m.bandBlur * m.bandBlur),
             info: SIMD4(UInt32(width), UInt32(height), UInt32(blobs.count), 0))

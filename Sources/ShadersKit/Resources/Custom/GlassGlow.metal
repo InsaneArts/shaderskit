@@ -51,7 +51,7 @@ struct GGParams {
     float4 a;       // height, contrast, edge softness, dispersion
     float4 b;       // bevel width, bevel refraction, bevel exponent, rim width
     float4 c;       // rim ambient, rim light, rim inset, intensity
-    float4 gamma;   // per-channel output gamma
+    float4 gamma;   // per-channel output gamma, w: aspect above which the lights stretch
     float4 rimColour;
     float4 band;    // inner band: inset, width, light, blur (squared)
     uint4 info;     // width, height, blob count, unused
@@ -158,7 +158,8 @@ kernel void gg_smooth(uint2 gid [[thread_position_in_grid]],
 
 /// The light field at `p`. `blur2` > 0 returns it convolved with a Gaussian (each light widened,
 /// its energy kept), for samples that would otherwise magnify fast-moving detail.
-static float3 gg_light(float2 p, float depth, constant GGParams& P, constant GGBlob* blobs, float blur2 = 0.0f) {
+static float3 gg_light(float2 p, float depth, constant GGParams& P, constant GGBlob* blobs, float stretch, float blur2 = 0.0f) {
+    p.x /= stretch;
     float z = P.a.x * sqrt(max(depth, 0.0f) + 1e-6f);
     float3 e = 0;
     for (uint k = 0; k < P.info.z; k++) {
@@ -181,6 +182,7 @@ static float3 gg_light(float2 p, float depth, constant GGParams& P, constant GGB
 struct GGFrame {
     float2 centre;  // box centre in pixels
     float height;   // box height in pixels
+    float width;    // box width in pixels
 };
 
 static GGFrame gg_frame(device GGBox& box) {
@@ -191,6 +193,7 @@ static GGFrame gg_frame(device GGBox& box) {
     GGFrame f;
     f.centre = float2(x0 + x1, y0 + y1) * 0.5f;
     f.height = max(y1 - y0, 1.0f);
+    f.width = max(x1 - x0, 1.0f);
     return f;
 }
 
@@ -207,8 +210,11 @@ kernel void gg_shade(uint2 gid [[thread_position_in_grid]],
     GGFrame f = gg_frame(box);
     float sdfPx = sdfTex.read(gid).r;
     float sdf = sdfPx / f.height;
-    // Outward normal from the distance field's gradient (central differences ~0.45% of the box).
-    int h = max(1, int(round(f.height * 0.0045f)));
+    // Horizontal scale of the light field, so wide shapes are lit end to end.
+    float stretch = max(1.0f, f.width / f.height / P.gamma.w);
+    // Outward normal from the distance field's gradient (central differences ~0.45% of the box,
+    // at least 3 px: closer samples pick up the flood's pixel steps as stripes along the edge).
+    int h = max(3, int(round(f.height * 0.0045f)));
     int2 g = int2(gid);
     int2 hi = int2(size) - 1;
     float dx = sdfTex.read(uint2(clamp(g + int2(h, 0), int2(0), hi))).r - sdfTex.read(uint2(clamp(g - int2(h, 0), int2(0), hi))).r;
@@ -232,18 +238,20 @@ kernel void gg_shade(uint2 gid [[thread_position_in_grid]],
     float inside = 1.0f / (1.0f + exp(-sdfPx / aaPx));
     float depth = max(sdf, 0.0f);
 
-    float bev = pow(clamp(1.0f - depth / P.b.x, 0.0f, 1.0f), P.b.z);
-    float3 glass;
-    float m[3] = { 1.0f - P.a.w, 1.0f, 1.0f + P.a.w };
-    for (int c = 0; c < 3; c++) {
-        float2 q = p - n * (P.b.y * m[c] * bev);
-        glass[c] = gg_light(q, depth, P, blobs)[c];
-    }
-    glass *= inside;
     float rim = exp(-abs(sdf) / P.b.w);
-    float3 rimRGB = rim * (P.c.x * P.rimColour.rgb + P.c.y * gg_light(p - nc * P.c.z, 0.0f, P, blobs, P.band.w));
-    // A thin band just inside the edge, lit from deeper in the shape (blurred light, coarse normal).
-    rimRGB += inside * exp(-depth / P.band.y) * P.band.z * gg_light(p - nc * P.band.x, 0.0f, P, blobs, P.band.w);
+    float3 rimRGB = rim * (P.c.x * P.rimColour.rgb + P.c.y * gg_light(p - nc * P.c.z, 0.0f, P, blobs, stretch, P.band.w));
+    float3 glass = 0;
+    if (inside > 1e-4f) {
+        float bev = pow(clamp(1.0f - depth / P.b.x, 0.0f, 1.0f), P.b.z);
+        float m[3] = { 1.0f - P.a.w, 1.0f, 1.0f + P.a.w };
+        for (int c = 0; c < 3; c++) {
+            float2 q = p - n * (P.b.y * m[c] * bev);
+            glass[c] = gg_light(q, depth, P, blobs, stretch)[c];
+        }
+        glass *= inside;
+        // A thin band just inside the edge, lit from deeper in the shape (blurred light, coarse normal).
+        rimRGB += inside * exp(-depth / P.band.y) * P.band.z * gg_light(p - nc * P.band.x, 0.0f, P, blobs, stretch, P.band.w);
+    }
     glassOut.write(float4(glass, 1), gid);
     baseOut.write(float4(glass + rimRGB, inside), gid);
 }

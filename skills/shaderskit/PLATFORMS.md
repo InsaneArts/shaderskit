@@ -7,7 +7,7 @@ SwiftPM (`Package.swift`):
 ```swift
 dependencies: [
     .package(path: "/path/to/ShadersKit"),            // local checkout, or
-    .package(url: "https://github.com/<org>/ShadersKit", from: "0.1.0"),
+    .package(url: "https://github.com/InsaneArts/shaderskit", from: "0.1.0"),
 ],
 targets: [ .target(name: "App", dependencies: [.product(name: "ShadersKit", package: "ShadersKit")]) ]
 ```

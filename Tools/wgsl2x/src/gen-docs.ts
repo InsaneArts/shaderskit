@@ -6,7 +6,7 @@ import {planProp, SHARED, type PropPlan} from './gen-swift.js'
 
 const repoRoot = process.argv[2]
 if (!repoRoot) throw new Error('usage: gen-docs <repoRoot>')
-const descDir = path.join(repoRoot, 'Sources/ShadersKit/Resources/Descriptors')
+const descDirs = ['Descriptors', 'Custom'].map((d) => path.join(repoRoot, 'Sources/ShadersKit/Resources', d))
 const outDir = path.join(repoRoot, 'skills/shaderskit/components')
 fs.mkdirSync(outDir, {recursive: true})
 const shared = new Map<string, string>(Object.entries(SHARED))
@@ -47,10 +47,16 @@ function swiftType(plan: PropPlan): string {
     return plan.type
 }
 
-const names = fs.readdirSync(descDir).filter((f) => f.endsWith('.json') && f !== 'index.json').map((f) => f.replace(/\.json$/, '')).sort()
+// Generated ports plus the hand-written components in Resources/Custom.
+const descPath = new Map<string, string>()
+for (const dir of descDirs) {
+    if (!fs.existsSync(dir)) continue
+    for (const f of fs.readdirSync(dir)) if (f.endsWith('.json') && f !== 'index.json') descPath.set(f.replace(/\.json$/, ''), path.join(dir, f))
+}
+const names = [...descPath.keys()].sort()
 const indexRows: Record<string, string[]> = {}
 for (const name of names) {
-    const d = JSON.parse(fs.readFileSync(path.join(descDir, `${name}.json`), 'utf8'))
+    const d = JSON.parse(fs.readFileSync(descPath.get(name)!, 'utf8'))
     const plans: PropPlan[] = d.props.map((p: any) => planProp(p, name, shared))
     const acceptsChildren = d.flags.requiresChild || d.flags.acceptsOptionalChild || d.role === 'structural'
     const qualified = CLASHING.has(name) ? `ShadersKit.${name}` : name
@@ -72,6 +78,7 @@ for (const name of names) {
     if (name === 'WebcamTexture') notes.push('iOS and macOS only (camera permission required); renders nothing elsewhere.')
     if (name === 'HTMLInCanvas') notes.push('Upstream captured DOM content. Here it renders a SwiftUI view registered with `ViewTextureRegistry` under the `source` prop (`.prop("source", "myView")`).')
     if (name === 'Text') notes.push('Rasterized with CoreText; Google font names map to the closest installed font.')
+    if (name === 'GlassGlow') notes.push('Not an upstream port: written for ShadersKit. The shape is the alpha of the wrapped content (an image, `Text`, a captured SwiftUI view); the light loops every 6 seconds at `speed` 1.')
     const selectEnums = plans.filter((p) => p.nestedEnum).map((p) => `- \`${name}.${p.nestedEnum!.name}\`: ${p.nestedEnum!.options.map((o) => `.${caseOf(o.value)}`).join(', ')}`)
     const listItems = plans.filter((p) => p.nestedItem).map((p) => `- \`${name}.${p.nestedItem!.name}(${p.nestedItem!.fields.map((f) => `${f.swiftName}: ${f.type}`).join(', ')})\``)
     const example = exampleFor(name, d, plans, acceptsChildren, qualified)
@@ -131,6 +138,9 @@ function exampleFor(name: string, d: any, plans: PropPlan[], acceptsChildren: bo
     // show the two or three most "visual" props explicitly
     const picks = plans.filter((p) => ['ShaderColor', 'Float', 'DimensionalValue'].includes(p.type) && !/^(seed|_)/.test(p.name)).slice(0, 3)
     const args = picks.map((p) => `${p.swiftName}: ${p.defaultExpr}`).join(', ')
+    if (name === 'GlassGlow') {
+        return `ShaderView {\n    GlassGlow(${args}) {\n        ImageTexture(url: "logo.png", objectFit: .contain)   // the shape: this content's alpha\n    }\n}`
+    }
     if (acceptsChildren) {
         return `ShaderView {\n    ${qualified}(${args}) {\n        ShadersKit.LinearGradient(colorA: "#0f172a", colorB: "#7c3aed")   // the content this ${d.role} applies to\n    }\n}`
     }
@@ -140,7 +150,7 @@ function exampleFor(name: string, d: any, plans: PropPlan[], acceptsChildren: bo
 const cats = Object.keys(indexRows).sort()
 const index = `# Component index
 
-199 components, grouped by upstream category. "all" platforms includes watchOS (CPU rasterizer); "Metal" means iOS, iPadOS, macOS, tvOS and visionOS only.
+${names.length} components, grouped by upstream category. "all" platforms includes watchOS (CPU rasterizer); "Metal" means iOS, iPadOS, macOS, tvOS and visionOS only.
 
 ${cats.map((c) => `## ${c}\n\n| Component | Role | Platforms | Summary |\n|---|---|---|---|\n${indexRows[c].join('\n')}`).join('\n\n')}
 `

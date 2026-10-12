@@ -2,6 +2,8 @@
 
 Everything under `Sources/ShadersKit/Generated` and `Sources/ShadersKit/Resources` is generated
 from the upstream repository by the pipeline in this folder. Run `Tools/regenerate.sh` to redo it.
+Hand-written components (`Sources/ShadersKit/Custom`, `Resources/Custom`) are not generated and are
+left alone; `gen-docs.ts` documents them with the ports.
 
 ## upstream-dump
 

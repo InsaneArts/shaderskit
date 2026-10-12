@@ -1,0 +1,333 @@
+{
+ "name": "GlassGlow",
+ "category": "Shape Effects",
+ "description": "Light sweeping through a glass shape, with a refracting edge and a soft halo",
+ "role": "filter",
+ "species": "custom",
+ "deprecatedNames": [],
+ "flags": {
+  "requiresRTT": false,
+  "requiresChild": true,
+  "acceptsOptionalChild": false,
+  "blendWithChildren": false,
+  "usesPointer": false,
+  "acceptsUVContext": false,
+  "providesUVContextViaCompute": false,
+  "capturesDOM": false,
+  "wantsBoundsParams": false,
+  "hasCompute": true,
+  "hasUvRemap": false,
+  "hasMapSampleUVs": false
+ },
+ "animatedTimeSpeedProp": "speed",
+ "extraAnimatedTimes": {},
+ "extraFields": [
+  {
+   "name": "_p3",
+   "type": "f32",
+   "initial": [
+    1
+   ]
+  }
+ ],
+ "props": [
+  {
+   "name": "speed",
+   "defaultValue": 1,
+   "description": "Animation speed (1 = one 6 second loop)",
+   "transform": {
+    "kind": "none"
+   },
+   "ui": {
+    "types": [
+     "range",
+     "map"
+    ],
+    "min": 0,
+    "max": 3,
+    "step": 0.01,
+    "label": "Speed",
+    "group": "Animation",
+    "hidden": false
+   },
+   "compileTime": false,
+   "isUniform": true,
+   "uniformType": "f32"
+  },
+  {
+   "name": "intensity",
+   "defaultValue": 1,
+   "description": "Brightness of the light inside the glass",
+   "transform": {
+    "kind": "none"
+   },
+   "ui": {
+    "types": [
+     "range",
+     "map"
+    ],
+    "min": 0,
+    "max": 2,
+    "step": 0.01,
+    "label": "Intensity",
+    "group": "Light",
+    "hidden": false
+   },
+   "compileTime": false,
+   "isUniform": true,
+   "uniformType": "f32"
+  },
+  {
+   "name": "glow",
+   "defaultValue": 1,
+   "description": "Strength of the halo around the shape",
+   "transform": {
+    "kind": "none"
+   },
+   "ui": {
+    "types": [
+     "range",
+     "map"
+    ],
+    "min": 0,
+    "max": 3,
+    "step": 0.01,
+    "label": "Glow",
+    "group": "Light",
+    "hidden": false
+   },
+   "compileTime": false,
+   "isUniform": true,
+   "uniformType": "f32"
+  },
+  {
+   "name": "refraction",
+   "defaultValue": 1,
+   "description": "How far the glass edge bends the light inward",
+   "transform": {
+    "kind": "none"
+   },
+   "ui": {
+    "types": [
+     "range",
+     "map"
+    ],
+    "min": 0,
+    "max": 3,
+    "step": 0.01,
+    "label": "Refraction",
+    "group": "Glass",
+    "hidden": false
+   },
+   "compileTime": false,
+   "isUniform": true,
+   "uniformType": "f32"
+  },
+  {
+   "name": "dispersion",
+   "defaultValue": 1,
+   "description": "Colour split along the glass edge",
+   "transform": {
+    "kind": "none"
+   },
+   "ui": {
+    "types": [
+     "range",
+     "map"
+    ],
+    "min": 0,
+    "max": 3,
+    "step": 0.01,
+    "label": "Dispersion",
+    "group": "Glass",
+    "hidden": false
+   },
+   "compileTime": false,
+   "isUniform": true,
+   "uniformType": "f32"
+  }
+ ],
+ "fields": [
+  {
+   "name": "speed",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "intensity",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "glow",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "refraction",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "dispersion",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "_opacity",
+   "type": "f32",
+   "cpu": false
+  },
+  {
+   "name": "_p3",
+   "type": "f32",
+   "cpu": false
+  }
+ ],
+ "variantAxes": [],
+ "variants": [
+  {
+   "key": {},
+   "isDefault": true,
+   "passes": [
+    {
+     "kind": "final",
+     "textureKey": null,
+     "entry": "GlassGlow_final",
+     "textures": [
+      {
+       "key": "compute_0",
+       "slot": 0,
+       "external": false
+      }
+     ],
+     "samplers": [
+      {
+       "name": "linearClamp",
+       "slot": 0
+      }
+     ],
+     "usesUniforms": true
+    }
+   ],
+   "textures": [
+    {
+     "key": "compute_0",
+     "kind": "compute"
+    }
+   ],
+   "computeSteps": 1
+  }
+ ],
+ "uniformLayout": {
+  "size": 96,
+  "fields": [
+   {
+    "path": "n_root._opacity",
+    "offset": 0,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_root._pad0",
+    "offset": 4,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_root._pad1",
+    "offset": 8,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_root._pad2",
+    "offset": 12,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x.speed",
+    "offset": 16,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x.intensity",
+    "offset": 20,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x.glow",
+    "offset": 24,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x.refraction",
+    "offset": 28,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x.dispersion",
+    "offset": 32,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x._opacity",
+    "offset": 36,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "n_x._p3",
+    "offset": 40,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "_sys.time",
+    "offset": 48,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "_sys.viewportSize",
+    "offset": 56,
+    "type": "vec2f",
+    "size": 8
+   },
+   {
+    "path": "_sys.logicalViewportSize",
+    "offset": 64,
+    "type": "vec2f",
+    "size": 8
+   },
+   {
+    "path": "_sys.aspect",
+    "offset": 72,
+    "type": "f32",
+    "size": 4
+   },
+   {
+    "path": "_sys.pointer",
+    "offset": 80,
+    "type": "vec2f",
+    "size": 8
+   },
+   {
+    "path": "_sys.pointerActive",
+    "offset": 88,
+    "type": "f32",
+    "size": 4
+   }
+  ]
+ },
+ "boundingBox": null,
+ "naturalSizeProp": null,
+ "msl": "GlassGlow",
+ "cpuSupported": false
+}

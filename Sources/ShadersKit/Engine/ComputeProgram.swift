@@ -24,6 +24,8 @@ public struct ComputeContext {
     public let height: Int
     /// Per-node persistent state (same object every frame).
     public let state: NodeState
+    /// Renderer options (working colour space, tone mapping).
+    public var options = RenderOptions()
 
     /// Scalar value of a prop after its CPU transform (angles wrapped, selects encoded, …).
     public func scalar(_ name: String) -> Float {

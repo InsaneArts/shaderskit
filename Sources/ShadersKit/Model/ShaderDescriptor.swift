@@ -378,12 +378,15 @@ public enum ShaderRegistry {
     public static var index: [ShaderIndexEntry] {
         lock.lock(); defer { lock.unlock() }
         if let i = indexCache { return i }
-        guard let url = Bundle.module.url(forResource: "index", withExtension: "json", subdirectory: "Descriptors"),
-              let data = try? Data(contentsOf: url),
-              let entries = try? JSONDecoder().decode([ShaderIndexEntry].self, from: data) else {
-            indexCache = []
-            return []
+        var entries: [ShaderIndexEntry] = []
+        // Generated ports, then the hand-written components in `Custom`.
+        for dir in ["Descriptors", "Custom"] {
+            guard let url = Bundle.module.url(forResource: "index", withExtension: "json", subdirectory: dir),
+                  let data = try? Data(contentsOf: url),
+                  let list = try? JSONDecoder().decode([ShaderIndexEntry].self, from: data) else { continue }
+            entries += list
         }
+        entries.sort { $0.name < $1.name }
         indexCache = entries
         return entries
     }
@@ -394,7 +397,8 @@ public enum ShaderRegistry {
     public static func descriptor(_ name: String) -> ShaderDescriptor? {
         lock.lock(); defer { lock.unlock() }
         if let d = cache[name] { return d }
-        guard let url = Bundle.module.url(forResource: name, withExtension: "json", subdirectory: "Descriptors"),
+        guard let url = Bundle.module.url(forResource: name, withExtension: "json", subdirectory: "Descriptors")
+                ?? Bundle.module.url(forResource: name, withExtension: "json", subdirectory: "Custom"),
               let data = try? Data(contentsOf: url) else {
             return nil
         }
@@ -410,7 +414,8 @@ public enum ShaderRegistry {
 
     /// MSL source for a shader's variants.
     public static func mslSource(_ msl: String) -> String? {
-        guard let url = Bundle.module.url(forResource: msl, withExtension: "metal", subdirectory: "MSL") else { return nil }
+        guard let url = Bundle.module.url(forResource: msl, withExtension: "metal", subdirectory: "MSL")
+                ?? Bundle.module.url(forResource: msl, withExtension: "metal", subdirectory: "Custom") else { return nil }
         return try? String(contentsOf: url, encoding: .utf8)
     }
 }

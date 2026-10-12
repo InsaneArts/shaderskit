@@ -9,6 +9,7 @@ let builtinPrograms: [ComputeProgram.Type] =
     + fluidsFamilyPrograms
     + agentsFamilyPrograms
     + gridFamilyPrograms
+    + [GlassGlowProgram.self]
 
 /// Media programs (image/video/camera/text sources).
 let builtinMediaPrograms: [MediaProgram.Type] =

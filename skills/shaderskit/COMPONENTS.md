@@ -1,6 +1,6 @@
 # Component index
 
-199 components, grouped by upstream category. "all" platforms includes watchOS (CPU rasterizer); "Metal" means iOS, iPadOS, macOS, tvOS and visionOS only.
+200 components, grouped by upstream category. "all" platforms includes watchOS (CPU rasterizer); "Metal" means iOS, iPadOS, macOS, tvOS and visionOS only.
 
 ## Adjustments
 
@@ -94,6 +94,7 @@
 | [Emboss](components/Emboss.md) | shapeEffect | Metal | Embossed / debossed relief shading on top of child content, driven by a custom shape |
 | [Frost](components/Frost.md) | shapeEffect | Metal | Photoreal frozen ice  |
 | [Glass](components/Glass.md) | shapeEffect | Metal | Optically realistic glass lens driven in a custom shape |
+| [GlassGlow](components/GlassGlow.md) | filter | Metal | Light sweeping through a glass shape, with a refracting edge and a soft halo |
 | [Goo](components/Goo.md) | shapeEffect | Metal | Photoreal wet liquid  |
 | [Heatmap](components/Heatmap.md) | shapeEffect | Metal | Thermal-camera heat flowing through any 2D, SVG, or 3D shape |
 | [Hologram](components/Hologram.md) | shapeEffect | Metal | Volumetric sci-fi hologram  |

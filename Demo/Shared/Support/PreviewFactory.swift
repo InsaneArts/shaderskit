@@ -3,7 +3,7 @@ import ShadersKit
 
 /// Content placed inside filters, warps and other wrapping components when previewing them.
 enum Subject: String, CaseIterable, Identifiable, Codable {
-    case scene, gradient, pattern, shapes, photo
+    case scene, gradient, pattern, shapes, photo, silhouette
 
     var id: String { rawValue }
 
@@ -14,6 +14,7 @@ enum Subject: String, CaseIterable, Identifiable, Codable {
         case .pattern: return "Pattern"
         case .shapes: return "Shapes"
         case .photo: return "Photo"
+        case .silhouette: return "Silhouette"
         }
     }
 
@@ -24,6 +25,7 @@ enum Subject: String, CaseIterable, Identifiable, Codable {
         case .pattern: return "checkerboard.rectangle"
         case .shapes: return "star.square.on.square"
         case .photo: return "photo"
+        case .silhouette: return "heart"
         }
     }
 
@@ -55,6 +57,9 @@ enum Subject: String, CaseIterable, Identifiable, Codable {
             ]
         case .photo:
             return [ShaderNode(type: "ImageTexture")]
+        case .silhouette:
+            // A shape on transparency, for components that use the content's alpha as their shape.
+            return [Heart(color: "#ffffff", radius: 0.32).node]
         }
     }
 }
@@ -75,6 +80,7 @@ enum PreviewFactory {
     }
 
     static func defaultSubject(for entry: ShaderIndexEntry) -> Subject {
+        if entry.name == "GlassGlow" { return .silhouette }
         switch entry.categoryName {
         case "Distortions": return entry.role == .shapeEffect ? .gradient : .pattern
         case "Blurs": return .shapes

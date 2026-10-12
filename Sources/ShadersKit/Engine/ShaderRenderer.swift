@@ -275,7 +275,8 @@ public final class ShaderRenderer {
             if !stats.unsupportedNodes.contains(desc.name) { stats.unsupportedNodes.append(desc.name) }
             return
         }
-        let ctx = ComputeContext(device: device, descriptor: desc, library: library, frame: frame, props: props, uniformBytes: UnsafeRawPointer(uniformScratch), uniformSize: pk.size, childTexture: child, rttTextures: rtt, commandBuffer: cb, width: width, height: height, state: st)
+        var ctx = ComputeContext(device: device, descriptor: desc, library: library, frame: frame, props: props, uniformBytes: UnsafeRawPointer(uniformScratch), uniformSize: pk.size, childTexture: child, rttTextures: rtt, commandBuffer: cb, width: width, height: height, state: st)
+        ctx.options = options
         do {
             let program: ComputeProgram
             if let existing = st.storage["__program"] as? ComputeProgram {

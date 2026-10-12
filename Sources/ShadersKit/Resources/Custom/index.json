@@ -1,0 +1,11 @@
+[
+ {
+  "name": "GlassGlow",
+  "category": "Shape Effects",
+  "description": "Light sweeping through a glass shape, with a refracting edge and a soft halo",
+  "role": "filter",
+  "acceptsChildren": true,
+  "hasCompute": true,
+  "cpuSupported": false
+ }
+]

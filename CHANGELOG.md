@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- `GlassGlow`, the first component written for ShadersKit rather than ported: light sweeping through
+  a glass shape (the alpha of its content), with a refracting, colour-split edge and a three-radius
+  halo. Props: `speed`, `intensity`, `glow`, `refraction`, `dispersion`. Metal only.
+- Hand-written components live in `Sources/ShadersKit/Custom` and `Resources/Custom`, which
+  `Tools/regenerate.sh` does not touch; the registry, the index and the skill docs include them.
+
 ## 0.1.0
 
 Initial port of the shaders.com library (upstream `shaders` 1.7.0, 199 components).

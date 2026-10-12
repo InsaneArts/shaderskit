@@ -25,7 +25,7 @@ struct RendererTests {
 
     @Test("registry lists every shipped component")
     func registry() throws {
-        #expect(ShaderRegistry.index.count == 199)
+        #expect(ShaderRegistry.index.count == 200)   // 199 ports + GlassGlow
         let lg = try #require(ShaderRegistry.descriptor("LinearGradient"))
         #expect(lg.props.count == 8)
         #expect(lg.variants.count == 48)

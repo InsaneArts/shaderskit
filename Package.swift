@@ -20,6 +20,7 @@ let package = Package(
             resources: [
                 .copy("Resources/MSL"),
                 .copy("Resources/Descriptors"),
+                .copy("Resources/Custom"),
             ]
         ),
         .testTarget(
